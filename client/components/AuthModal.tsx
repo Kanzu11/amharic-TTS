@@ -27,7 +27,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, onForgo
     setIsVerifying(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -71,7 +71,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, onForgo
     setIsVerifying(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/register', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
@@ -98,7 +98,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, onForgo
     setIsVerifying(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/verifyemail', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verifyemail`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: otp }),
@@ -170,7 +170,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin, onForgo
                   <button type="button" onClick={async () => {
                     toast.loading("Resending code...", { id: 'resend' });
                     try {
-                      await fetch('http://localhost:3001/api/auth/resend-verification', {
+                      await fetch(`${import.meta.env.VITE_API_URL}/api/auth/resend-verification`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email })

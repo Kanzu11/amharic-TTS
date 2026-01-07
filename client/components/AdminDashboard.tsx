@@ -44,7 +44,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`http://localhost:3001/api/payment/pending?page=${page}&limit=5`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/pending?page=${page}&limit=5`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -65,7 +65,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch('http://localhost:3001/api/auth/users', { // Wait, I didn't create a GET /users route! I only created role update/delete. 
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/users`, { // Wait, I didn't create a GET /users route! I only created role update/delete. 
         // I need to create GET /users route first? Or is it already there?
         // Checking previous file context of authRoutes.js... it was NOT showing GET /users.
         // I should assume I need to ADD GET /users to backend too.
@@ -94,7 +94,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
   const fetchHistory = async (page = 1) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`http://localhost:3001/api/payment/history?page=${page}&limit=5`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/history?page=${page}&limit=5`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -140,7 +140,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
     if (!confirm("Are you sure you want to delete this user? This action cannot be undone.")) return;
     try {
       const token = localStorage.getItem('authToken');
-      const res = await fetch(`http://localhost:3001/api/auth/users/${userId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/users/${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -160,7 +160,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
 
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`http://localhost:3001/api/payment/${id}/reject`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/${id}/reject`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -181,7 +181,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
 
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`http://localhost:3001/api/payment/${id}/approve`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/${id}/approve`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -201,7 +201,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch('http://localhost:3001/api/auth/create-admin', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/create-admin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -227,7 +227,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ currentUser }) => {
     if (!confirm("Are you sure you want to revoke this user's subscription?")) return;
     try {
       const token = localStorage.getItem('authToken');
-      const res = await fetch(`http://localhost:3001/api/auth/users/${userId}/revoke-subscription`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/users/${userId}/revoke-subscription`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });

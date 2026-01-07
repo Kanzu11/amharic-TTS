@@ -20,7 +20,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ token, onSuccess }) => {
 
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3001/api/auth/resetpassword/${token}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/resetpassword/${token}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password })

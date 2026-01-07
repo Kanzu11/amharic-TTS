@@ -17,7 +17,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:3001/api/auth/forgotpassword', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/forgotpassword`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
@@ -47,7 +47,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack }) => {
 
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:3001/api/auth/resetpassword', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/resetpassword`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, otp, password: newPassword })
