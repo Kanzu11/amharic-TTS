@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Amharic Expressive TTS",
+  "description": "A high-quality Amharic text-to-speech converter that captures emotion and tone using the Gemini TTS engine.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
